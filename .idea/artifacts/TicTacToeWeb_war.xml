@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="TicTacToeWeb:war">
+    <output-path>$PROJECT_DIR$/TicTacToeWeb/target</output-path>
+    <root id="archive" name="TicTacToeWeb.war">
+      <element id="artifact" artifact-name="TicTacToeWeb:war exploded" />
+    </root>
+  </artifact>
+</component>

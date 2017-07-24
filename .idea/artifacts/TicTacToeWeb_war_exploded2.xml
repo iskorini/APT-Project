@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="TicTacToeWeb:war exploded2">
+    <output-path>$PROJECT_DIR$/out/artifacts/TicTacToeWeb_war_exploded2</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TicTacToeWeb/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="TicTacToeWeb" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

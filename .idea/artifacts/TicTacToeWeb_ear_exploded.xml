@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="TicTacToeWeb:ear exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/TicTacToeWeb_ear_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TicTacToeWeb/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>
