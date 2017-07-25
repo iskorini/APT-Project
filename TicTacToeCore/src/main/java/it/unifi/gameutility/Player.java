@@ -10,6 +10,7 @@ public class Player {
 
     public Player(String username) {
         this.username = username;
+        this.points = "0";
     }
 
     public String getUsername() {
@@ -18,5 +19,13 @@ public class Player {
 
     public String getPoints() {
         return points;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
     }
 }
