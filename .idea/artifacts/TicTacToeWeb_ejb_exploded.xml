@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ejb" name="TicTacToeWeb:ejb exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/TicTacToeWeb_ejb_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="TicTacToeWeb/ejb/EJB" />
+      <element id="javaee-facet-classes" facet="TicTacToeWeb/ejb/EJB" />
+    </root>
+  </artifact>
+</component>

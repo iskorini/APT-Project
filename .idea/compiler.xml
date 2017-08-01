@@ -16,7 +16,7 @@
       <module name="TicTacToe" target="1.5" />
       <module name="tictactoecore" target="1.8" />
       <module name="TicTacToeCore" target="1.8" />
-      <module name="TicTacToeWeb" target="1.7" />
+      <module name="TicTacToeWeb" target="1.8" />
       <module name="untitled" target="1.7" />
     </bytecodeTargetLevel>
   </component>
