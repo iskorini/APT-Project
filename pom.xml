@@ -14,7 +14,7 @@
     <main.basedir>${project.basedir}</main.basedir>
   </properties>
   <modules>
-    <module>\tictactoecore</module>
+    <module>\TicTacToeCore</module>
     <module>\TicTacToeWeb</module>
   </modules>
 
