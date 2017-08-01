@@ -3,4 +3,4 @@ language: java
 install: true
 
 script:
-- mvn -f TicTacToe/pom.xml clean validate compile test verify
+- mvn -f pom.xml clean validate compile test verify
