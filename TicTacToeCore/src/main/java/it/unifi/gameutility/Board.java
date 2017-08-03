@@ -22,6 +22,17 @@ public class Board {
         this.initializeBoard();
     }
 
+
+    public Board(Board c) {
+        this.dimension = c.getDimension();
+        this.board = new short[this.dimension][this.dimension];
+        for (short i = 0; i<board.length; i++) {
+            for (short j = 0; j<board.length; j++) {
+                board[i][j] = c.getPosition(i, j);
+            }
+        }
+    }
+
     private void initializeBoard() {
         for (int i = 0; i<board.length; i++) {
             for (int j = 0; j<board.length; j++) {
@@ -36,7 +47,7 @@ public class Board {
 
     public void setPosition(short a, short b, short value) throws NotValidValueException {
         try {
-            if (value != 0 || value != 1) {
+            if (value != (short) 0 && value != (short) 1) {
                 throw new NotValidValueException(value+" is not valid");
             } else {
                 board[a][b] = value;
@@ -56,6 +67,16 @@ public class Board {
         return dimension;
     }
 
+    public String toString(){
+        String board = "";
+        for(short i = 0; i < this.getDimension(); i++){
+            for(short j = 0; j < this.getDimension(); j++){
+                board = board + getPosition(i, j) + " ";
+            }
+            board = board + "\n";
+        }
+        return board;
+    }
 
 
 }
