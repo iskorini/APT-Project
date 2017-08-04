@@ -1,0 +1,16 @@
+version: '2'
+
+
+services:
+  db:
+    image: mongo
+    ports:
+        - 27017:27017
+
+  server:
+    image:  jboss/wildfly-admin
+    ports:
+      - 8080:8080
+      - 9990:9990
+    links:
+      - "db:mongo-host"
