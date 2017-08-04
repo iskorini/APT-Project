@@ -22,10 +22,10 @@ cache:
 install:
   - docker pull mongo
   - docker pull jboss/wildfly
-  - docker build --tag=jboss/wildfly-admin .
+  - docker build --tag=jboss/wildfly-admin \TicTacToeWeb
 
 script:
  - if [ "$WITH_COVERALLS" == "true" ];
-   then mvn -f pom.xml clean verify -Pjacoco coveralls:report;
+   then mvn -f pom.xml clean verify -Pjacoco org.eluder.coveralls:coveralls-maven-plugin:report;
    else mvn -f pom.xml clean verify;
    fi
