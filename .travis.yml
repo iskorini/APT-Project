@@ -26,6 +26,6 @@ install:
 
 script:
  - if [ "$WITH_COVERALLS" == "true" ];
-   then mvn -f pom.xml clean verify -Pjacoco org.eluder.coveralls:coveralls-maven-plugin:report;
+   then mvn -f pom.xml clean verify validate compile test -Pjacoco org.eluder.coveralls:coveralls-maven-plugin:report;
    else mvn -f pom.xml clean verify;
    fi

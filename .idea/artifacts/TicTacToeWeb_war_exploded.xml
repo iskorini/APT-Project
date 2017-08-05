@@ -13,7 +13,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.7.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.3" />
           <element id="library" level="project" name="Maven: de.undercouch:bson4jackson:2.7.0" />
-          <element id="archive" name="tictactoe-core-1.0-SNAPSHOT.jar">
+          <element id="archive" name="TicTacToeCore-1.0-SNAPSHOT.jar">
             <element id="module-output" name="TicTacToeCore" />
           </element>
           <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jackson-provider:3.0.1.Final" />
