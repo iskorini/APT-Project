@@ -2,7 +2,6 @@ package it.unifi.DB.Wrapper;
 
 import com.github.fakemongo.Fongo;
 import com.mongodb.DB;
-import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import it.unifi.exception.EntryAlreadyInsertedException;
 import it.unifi.exception.UserNotExistingException;
@@ -14,7 +13,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UserDBMongoWrapperTest {
+public class UserDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
 
 
     private UserDBMongoWrapper userDBMongoWrapper;
@@ -23,8 +22,6 @@ public class UserDBMongoWrapperTest {
 
     @Before
     public void setUp() throws Exception {
-        Fongo fongo = new Fongo("UnitTest fake server");
-        MongoClient mongoClient = fongo.getMongo();
         DB db = mongoClient.getDB("GameDB");
         db.getCollection("UserCollection").drop();
         Jongo jongo = new Jongo(db);
