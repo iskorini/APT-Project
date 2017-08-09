@@ -3,6 +3,7 @@ package it.unifi.DB.Wrapper;
 import com.github.fakemongo.Fongo;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import it.unifi.bean.MongoClientProviderBean;
 import it.unifi.gameutility.Board;
 import it.unifi.gameutility.Player;
 import it.unifi.utility.SingleGame;
@@ -10,22 +11,31 @@ import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SingleGameDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
 
 
     private SingleGameDBMongoWrapper singleGameDBMongoWrapper;
     private MongoCollection dbCollection;
 
+    @Mock
+    MongoClientProviderBean mongoClientProviderBean;
+
     @Before
     public void setUp() throws Exception {
         DB db = super.mongoClient.getDB("GameDB");
         db.getCollection("SingleGameCollection").drop();
         Jongo jongo = new Jongo(db);
-        singleGameDBMongoWrapper = new SingleGameDBMongoWrapper(mongoClient);
+        when(mongoClientProviderBean.getMongoClient()).thenReturn(mongoClient);
+        singleGameDBMongoWrapper = new SingleGameDBMongoWrapper(mongoClientProviderBean);
         dbCollection = jongo.getCollection("SingleGameCollection");
     }
 

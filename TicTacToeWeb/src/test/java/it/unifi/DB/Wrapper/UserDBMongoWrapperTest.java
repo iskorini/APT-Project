@@ -2,7 +2,9 @@ package it.unifi.DB.Wrapper;
 
 import com.github.fakemongo.Fongo;
 import com.mongodb.DB;
+import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import it.unifi.bean.MongoClientProviderBean;
 import it.unifi.exception.EntryAlreadyInsertedException;
 import it.unifi.exception.UserNotExistingException;
 import it.unifi.gameutility.Player;
@@ -10,22 +12,29 @@ import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class UserDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
 
 
     private UserDBMongoWrapper userDBMongoWrapper;
     private MongoCollection dbCollection;
-
+    @Mock
+    MongoClientProviderBean mongoClientProviderBean;
 
     @Before
     public void setUp() throws Exception {
         DB db = mongoClient.getDB("GameDB");
         db.getCollection("UserCollection").drop();
         Jongo jongo = new Jongo(db);
-        userDBMongoWrapper = new UserDBMongoWrapper(mongoClient);
+        when(mongoClientProviderBean.getMongoClient()).thenReturn(mongoClient);
+        userDBMongoWrapper = new UserDBMongoWrapper(mongoClientProviderBean);
         dbCollection = jongo.getCollection("UserCollection");
 
     }

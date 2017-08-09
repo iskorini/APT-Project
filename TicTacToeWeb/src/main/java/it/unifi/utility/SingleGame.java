@@ -10,6 +10,7 @@ public class SingleGame {
     private Board board;
     private Player player;
     private String gameID;
+    private String result;
 
     public SingleGame() {
 
@@ -34,6 +35,7 @@ public class SingleGame {
         this.board = board;
         this.player = player;
         this.gameID = UUID.randomUUID().toString();
+        this.result = "0";
     }
 
     public Board getBoard() {

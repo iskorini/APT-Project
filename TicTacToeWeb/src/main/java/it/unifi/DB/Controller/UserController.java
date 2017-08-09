@@ -4,16 +4,28 @@ import it.unifi.exception.EntryAlreadyInsertedException;
 import it.unifi.exception.UserNotExistingException;
 import it.unifi.gameutility.Player;
 import it.unifi.interfaces.UserDatabase;
+import org.apache.log4j.Logger;
+import sun.rmi.runtime.Log;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.xml.registry.infomodel.User;
 import java.util.List;
 
+
+@Stateless
 public class UserController {
 
-
+    private static final Logger logger = Logger.getLogger(UserController.class);
     private UserDatabase userDatabase;
 
+    @Inject
     public UserController(UserDatabase userDatabase) {
+        logger.info("creato user controller -> userDatabase iniettato");
         this.userDatabase = userDatabase;
+    }
+
+    public UserController() {
     }
 
     public List<Player> getAllUser() {

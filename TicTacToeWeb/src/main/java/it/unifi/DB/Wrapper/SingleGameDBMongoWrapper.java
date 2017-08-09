@@ -2,28 +2,35 @@ package it.unifi.DB.Wrapper;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import it.unifi.bean.MongoClientProviderBean;
 import it.unifi.exception.EntryAlreadyInsertedException;
 import it.unifi.interfaces.SingleGameDatabase;
 import it.unifi.utility.SingleGame;
 import org.jongo.Jongo;
 import org.jongo.MongoCollection;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Stateless
 public class SingleGameDBMongoWrapper implements SingleGameDatabase {
 
 
     private MongoClient mongoClient;
     private MongoCollection mongoCollection;
 
-
-    public SingleGameDBMongoWrapper(MongoClient mongoClient) {
-        this.mongoClient = mongoClient;
+    @Inject
+    public SingleGameDBMongoWrapper(MongoClientProviderBean mongoClientProviderBean) {
+        this.mongoClient = mongoClientProviderBean.getMongoClient();
         DB db = mongoClient.getDB("GameDB");
         Jongo jongo = new Jongo(db);
         mongoCollection = jongo.getCollection("SingleGameCollection");
+    }
+
+    public SingleGameDBMongoWrapper() {
     }
 
     @Override

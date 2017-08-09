@@ -13,15 +13,15 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.7.3" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.7.3" />
           <element id="library" level="project" name="Maven: de.undercouch:bson4jackson:2.7.0" />
-          <element id="archive" name="TicTacToeCore-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="TicTacToeCore" />
-          </element>
           <element id="library" level="project" name="Maven: org.jboss.resteasy:resteasy-jackson-provider:3.0.1.Final" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.12" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.12" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-jaxrs:1.9.12" />
           <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-xc:1.9.12" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.12" />
+          <element id="archive" name="TicTacToeCore-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="TicTacToeCore" />
+          </element>
         </element>
       </element>
       <element id="directory" name="META-INF">

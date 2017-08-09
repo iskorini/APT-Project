@@ -5,16 +5,22 @@ import it.unifi.exception.UserNotExistingException;
 import it.unifi.interfaces.SingleGameDatabase;
 import it.unifi.utility.SingleGame;
 
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 import java.util.List;
 
-
+@Stateless
 public class SingleGameController {
 
 
     private SingleGameDatabase singleGameDatabase;
 
+    @Inject
     public SingleGameController(SingleGameDatabase singleGameDatabase) {
         this.singleGameDatabase = singleGameDatabase;
+    }
+
+    public SingleGameController() {
     }
 
 
