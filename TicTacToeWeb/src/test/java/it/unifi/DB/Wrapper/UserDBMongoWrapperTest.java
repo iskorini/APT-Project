@@ -19,21 +19,18 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
 public class UserDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
 
 
     private UserDBMongoWrapper userDBMongoWrapper;
     private MongoCollection dbCollection;
-    @Mock
-    MongoClientProviderBean mongoClientProviderBean;
+
 
     @Before
     public void setUp() throws Exception {
         DB db = mongoClient.getDB("GameDB");
         db.getCollection("UserCollection").drop();
         Jongo jongo = new Jongo(db);
-        when(mongoClientProviderBean.getMongoClient()).thenReturn(mongoClient);
         userDBMongoWrapper = new UserDBMongoWrapper(mongoClientProviderBean);
         dbCollection = jongo.getCollection("UserCollection");
 
