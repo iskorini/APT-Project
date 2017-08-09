@@ -4,6 +4,7 @@ import com.github.fakemongo.Fongo;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import it.unifi.bean.MongoClientProviderBean;
+import it.unifi.exception.EntryAlreadyInsertedException;
 import it.unifi.gameutility.Board;
 import it.unifi.gameutility.Player;
 import it.unifi.utility.SingleGame;
@@ -17,7 +18,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 
 public class SingleGameDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
@@ -45,6 +46,14 @@ public class SingleGameDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
     }
 
 
+    @Test
+    public void testNoParameterConstructor() throws Exception {
+        singleGameDBMongoWrapper = new SingleGameDBMongoWrapper();
+        assertNotNull(singleGameDBMongoWrapper);
+        /*
+        TODO: Boh?
+         */
+    }
     @Test
     public void getAllSingleGameWithOneGame() throws Exception {
         addSingleGameToDB("Carmen");
@@ -85,9 +94,28 @@ public class SingleGameDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
 
     @Test
     public void addSingleGame() throws Exception {
-        SingleGame s1 = addSingleGameToDB("Ursula");
+        Board b1 = new Board((short) 3);
+        Player p1 = new Player("Ursula");
+        SingleGame s1 = new SingleGame(b1, p1);
+        singleGameDBMongoWrapper.addSingleGame(s1);
         assertEquals(singleGameDBMongoWrapper.getSingleGameByUsername("Ursula").size(), 1);
         assertEquals(singleGameDBMongoWrapper.getSingleGameByUsername("Ursula").get(0), s1);
+    }
+
+    @Test(expected = EntryAlreadyInsertedException.class)
+    public void addSingleGameWhenSingleGameAlreadyExists() throws Exception {
+        Board b1 = new Board((short) 3);
+        Player p1 = new Player("Neri");
+        SingleGame s1 = new SingleGame(b1, p1);
+        /*
+        TODO: risolvere!
+        SingleGame s1 = spy(new SingleGame(b1, p1));
+        Se faccio lo spy jackson non riesce a renderlo un JSON
+         */
+        singleGameDBMongoWrapper.addSingleGame(s1);
+        singleGameDBMongoWrapper.addSingleGame(s1);
+        assertEquals(singleGameDBMongoWrapper.getAllSingleGame().size(), 1);
+
     }
 
 }

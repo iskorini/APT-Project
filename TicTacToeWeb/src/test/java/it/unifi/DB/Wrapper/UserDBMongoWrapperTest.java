@@ -40,6 +40,13 @@ public class UserDBMongoWrapperTest extends AbstractDBMongoWrapperTest {
         dbCollection.insert(new Player(username));
     }
 
+
+    @Test
+    public void testNoParameterConstructor() {
+        userDBMongoWrapper = new UserDBMongoWrapper();
+        assertNotNull(userDBMongoWrapper);
+    }
+
     @Test
     public void getAllUserWithOneUser() throws Exception {
         addUserToFakeMongo("Antonio");

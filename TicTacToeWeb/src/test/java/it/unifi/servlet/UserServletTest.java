@@ -22,6 +22,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -59,6 +60,12 @@ public class UserServletTest {
             e.printStackTrace();
         }
         return request;
+    }
+
+    @Test
+    public void testConstructorWithNoParameter() throws Exception {
+        userServlet = new UserServlet();
+        assertNotNull(userServlet);
     }
 
     @Test

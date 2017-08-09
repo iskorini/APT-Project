@@ -49,7 +49,7 @@ public class SingleGameDBMongoWrapper implements SingleGameDatabase {
 
     @Override
     public boolean addSingleGame(SingleGame singleGame) throws EntryAlreadyInsertedException {
-        if (mongoCollection.count("{username: #}", singleGame.getGameID()) == 1) {
+        if (mongoCollection.count("{gameID: #}", singleGame.getGameID()) == 1) {
             throw new EntryAlreadyInsertedException("Game " + singleGame.getGameID() + " already inserted");
         }
         mongoCollection.insert(singleGame);

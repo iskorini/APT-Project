@@ -6,7 +6,9 @@ import it.unifi.interfaces.SingleGameDatabase;
 import it.unifi.utility.SingleGame;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +18,18 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class SingleGameControllerTest {
 
 
     SingleGameController singleGameController;
+    @Mock
     SingleGameDatabase singleGameDatabase;
     private List<SingleGame> singleGameList;
 
 
     @Before
     public void setUp() throws Exception {
-        singleGameDatabase = mock(SingleGameDatabase.class);
         singleGameController = new SingleGameController(singleGameDatabase);
         singleGameList = new ArrayList<>();
         when(singleGameDatabase.getAllSingleGame()).thenReturn(singleGameList);
@@ -41,6 +44,14 @@ public class SingleGameControllerTest {
         return new SingleGame(b, p);
 
     }
+
+
+    @Test
+    public void testNoParameterConstructor() throws Exception {
+        singleGameController = new SingleGameController();
+        assertNotNull(singleGameController);
+    }
+
 
     @Test
     public void getAllSingleGameWithOneGame() throws Exception {

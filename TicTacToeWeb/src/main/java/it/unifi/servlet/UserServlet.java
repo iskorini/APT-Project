@@ -54,24 +54,14 @@ public class UserServlet {
     @Path("/{id}")
     @Produces("application/json")
     @Consumes("application/json")
-    public Response addUser(Player p) {
+    public Response addUser(Player p) throws EntryAlreadyInsertedException, UserNotExistingException {
         Player p1 = userController.getUserByID(p.getUsername());
         if (p1 == null) {
-            try {
-                userController.addUser(new Player(p.getUsername()));
-                logger.info(p.getUsername() + ": aggiunto");
-            } catch (EntryAlreadyInsertedException e) {
-                logger.error(p.getUsername() + ": errore inserimento -> " + e.toString());
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-            }
+            userController.addUser(new Player(p.getUsername()));
+            logger.info(p.getUsername() + ": aggiunto");
         } else {
-            try {
-                userController.updatePlayer(p);
-                logger.info(p.getUsername() + ": aggiornato");
-            } catch (UserNotExistingException e) {
-                logger.error(p.getUsername() + ": errore aggiornamento -> " + e.toString());
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
-            }
+            userController.updatePlayer(p);
+            logger.info(p.getUsername() + ": aggiornato");
         }
         logger.info(p.getUsername() + ": OK");
         return Response.status(Response.Status.OK).entity(p).build();

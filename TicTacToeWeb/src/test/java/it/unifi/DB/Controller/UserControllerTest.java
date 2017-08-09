@@ -4,6 +4,9 @@ import it.unifi.gameutility.Player;
 import it.unifi.interfaces.UserDatabase;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -11,9 +14,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class UserControllerTest {
 
-
+    @Mock
     private UserDatabase userDatabase;
     private List<Player> playerList;
     private UserController userController;
@@ -21,10 +25,16 @@ public class UserControllerTest {
     @Before
     public void setUp() throws Exception {
         playerList = new LinkedList<>();
-        userDatabase = mock(UserDatabase.class);
         userController = new UserController(userDatabase);
         when(userDatabase.getAllUser()).thenReturn(playerList);
     }
+
+    @Test
+    public void testConstructorWithNoParameter() throws Exception {
+        userController = new UserController();
+        assertNotNull(userController);
+    }
+
 
     @Test
     public void getAllUserWithOneUser() throws Exception {
