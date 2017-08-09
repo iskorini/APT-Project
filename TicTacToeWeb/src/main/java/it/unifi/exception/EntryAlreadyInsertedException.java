@@ -6,6 +6,4 @@ public class EntryAlreadyInsertedException extends Exception {
         super(message);
     }
 
-    public EntryAlreadyInsertedException() {
-    }
 }
